@@ -1,0 +1,193 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SELECTZ</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }body {
+  background: url('https://cdn.discordapp.com/attachments/1255843184710385698/1388677161900310578/0f1ba3323de4711a314119a80205c0bf.gif?ex=6861d9e3&is=68608863&hm=fe056732ceb88269a955db2aebfcfa8f5e2b85f67fc075db0c2f23ce751a6ea9&') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}
+
+header {
+  margin-top: 30px;
+}
+
+header img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+}
+
+h1 {
+  margin-top: 15px;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 8px #000;
+}
+
+.links {
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 300px;
+}
+
+.links a {
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid white;
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.links a:hover {
+  background-color: white;
+  color: black;
+}
+
+.player-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 10px;
+  border-radius: 12px;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgb(255, 196, 0);
+}
+
+.cover-art {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.track-info {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85rem;
+}
+
+.track-info strong {
+  font-size: 1rem;
+}
+
+audio {
+  width: 150px;
+  background: transparent;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+    text-align: center;
+  }
+
+  header img {
+    width: 120px;
+    height: 120px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .links {
+    max-width: 100%;
+    gap: 10px;
+  }
+
+  .links a {
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+
+  .player-container {
+    flex-direction: column;
+    align-items: flex-start;
+    bottom: 10px;
+    right: 10px;
+    width: 90%;
+  }
+
+  .cover-art {
+    width: 50px;
+    height: 50px;
+  }
+
+  .track-info {
+    font-size: 0.75rem;
+  }
+
+  audio {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <header>
+    <img src="https://cdn.discordapp.com/attachments/1255843184710385698/1388672202983080126/96175f97000dd6ebdbd85fd25c8bfa13.jpg?ex=6861d545&is=686083c5&hm=4d10c0e754509497c622e54ac2803c4915c341b72b681ff839a8b061c1675afe&" alt="Foto SELECTZ">
+    <h1>SELECTZ</h1>
+  </header>  <div class="links">
+    <a href="https://www.instagram.com/selectzbeats?igsh=eDhldGRoZ25rb2F" target="_blank">Instagram</a>
+    <a href="https://www.tiktok.com/@slcxz1?_t=ZM-8xaxHTJEv13&_r=1" target="_blank">TikTok</a>
+    <a href="https://youtube.com/@selectzbeats?si=AF9RS6cUplfERzsN" target="_blank">YouTube</a>
+    <a href="https://wa.me/+5512992605053" target="_blank">WhatsApp - Encomendar Beat</a>
+  </div>  <div class="player-container">
+    <img src="https://cdn.discordapp.com/attachments/1255843184710385698/1388679860062519346/Polish_20250628_180356033.jpg?ex=6861dc67&is=68608ae7&hm=f4c0a0f7689ddc58f617bde6d6dd0f96ef1468c1269f719be3a123a98c90c966&" alt="TARANTELLA.jpg" class="cover-art">
+    <div class="track-info">
+      <strong>TARANTELLA!</strong>
+      <span>SELECTZ</span>
+    </div>
+    <audio id="audioPlayer" controls autoplay loop>
+      <source src="https://cdn.discordapp.com/attachments/1255843184710385698/1388677227280863394/Tarantella_2.mp3?ex=6861d9f3&is=68608873&hm=503324d2bb5778a2e61ad5c688e3db9dff1a4325b85597e9d2cb576298eac2a7&" type="audio/mpeg">
+      Seu navegador não suporta áudio.
+    </audio>
+  </div>  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const audio = document.getElementById('audioPlayer');
+
+      const startAudio = () => {
+        audio.play().catch((e) => {
+          console.log('Autoplay bloqueado, aguardando clique...');
+        });
+        document.removeEventListener('click', startAudio);
+      };
+
+      document.addEventListener('click', startAudio);
+    });
+  </script></body>
+</html>
